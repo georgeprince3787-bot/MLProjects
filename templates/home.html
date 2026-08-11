@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Exam Performance Indicator</title>
+</head>
+<body>
+    <h1>Student Exam Performance Indicator</h1>
+    <h1>Student Exam Performance Prediction</h1>
+
+    <form method="POST" action="/predictdata">
+        <div>
+            Gender 
+            <select name="gender">
+                <option value="male" {% if gender=='male' %}selected{% endif %}>Male</option>
+                <option value="female" {% if gender=='female' %}selected{% endif %}>Female</option>
+            </select>
+        </div>
+        <div>
+            Race or Ethnicity 
+            <select name="race_ethnicity">
+                <option value="group A" {% if race_ethnicity=='group A' %}selected{% endif %}>group A</option>
+                <option value="group B" {% if race_ethnicity=='group B' %}selected{% endif %}>group B</option>
+                <option value="group C" {% if race_ethnicity=='group C' %}selected{% endif %}>group C</option>
+                <option value="group D" {% if race_ethnicity=='group D' %}selected{% endif %}>group D</option>
+                <option value="group E" {% if race_ethnicity=='group E' %}selected{% endif %}>group E</option>
+            </select>
+        </div>
+        <div>
+            Parental Level of Education 
+            <select name="parental_level_of_education">
+                <option value="some high school" {% if parental_level_of_education=='some high school' %}selected{% endif %}>some high school</option>
+                <option value="high school" {% if parental_level_of_education=='high school' %}selected{% endif %}>high school</option>
+                <option value="some college" {% if parental_level_of_education=='some college' %}selected{% endif %}>some college</option>
+                <option value="associate's degree" {% if parental_level_of_education=="associate's degree" %}selected{% endif %}>associate's degree</option>
+                <option value="bachelor's degree" {% if parental_level_of_education=="bachelor's degree" %}selected{% endif %}>bachelor's degree</option>
+            </select>
+        </div>
+        <div>
+            Lunch Type 
+            <select name="lunch">
+                <option value="standard" {% if lunch=='standard' %}selected{% endif %}>standard</option>
+                <option value="free/reduced" {% if lunch=='free/reduced' %}selected{% endif %}>free/reduced</option>
+            </select>
+        </div>
+        <div>
+            Test preparation Course 
+            <select name="test_preparation_course">
+                <option value="none" {% if test_preparation_course=='none' %}selected{% endif %}>none</option>
+                <option value="completed" {% if test_preparation_course=='completed' %}selected{% endif %}>completed</option>
+            </select>
+        </div>
+        <div>
+            Writing Score out of 100 
+            <input type="text" name="writing_score" placeholder="Enter writing score" size="6" value="{{ writing_score|default('') }}">
+        </div>
+        <div>
+            Reading Score out of 100 
+            <input type="text" name="reading_score" placeholder="Enter reading score" size="6" value="{{ reading_score|default('') }}">
+        </div>
+        <div>
+            <button type="submit">Predict your Maths Score</button>
+        </div>
+    </form>
+
+    <h2>THE prediction is {{ prediction }}</h2>
+</body>
+</html>
